@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhaskar's Budgies Paradise 🦜 | Moradabad</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Sans+Devanagari:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2d6a4f;
+    --green-light: #52b788;
+    --green-pale: #d8f3dc;
+    --yellow: #f9c74f;
+    --orange: #f8961e;
+    --cream: #fefae0;
+    --dark: #1b1b1b;
+    --text: #2d2d2d;
+    --muted: #6b7280;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(254, 250, 224, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 2px solid var(--green-pale);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+
+  .nav-cta {
+    background: var(--green);
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 30px;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--green-light) !important; transform: scale(1.04); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 40px 60px;
+    background: linear-gradient(135deg, #d8f3dc 0%, #fefae0 50%, #fff8e7 100%);
+  }
+
+  .hero-bg-birds {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .floating-bird {
+    position: absolute;
+    font-size: 40px;
+    animation: floatBird linear infinite;
+    opacity: 0.15;
+  }
+
+  @keyframes floatBird {
+    0% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(-5deg); }
+  }
+
+  .hero-content {
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.8s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 span { color: var(--orange); }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 36px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--green);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s;
+    box-shadow: 0 8px 24px rgba(45, 106, 79, 0.3);
+  }
+  .btn-primary:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(45, 106, 79, 0.4); }
+
+  .btn-secondary {
+    background: white;
+    color: var(--green);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--green);
+    transition: all 0.25s;
+  }
+  .btn-secondary:hover { background: var(--green-pale); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--green);
+  }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+  /* SECTION */
+  section { padding: 80px 40px; }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--green);
+    margin-bottom: 10px;
+  }
+
+  .section-title p { color: var(--muted); font-size: 15px; }
+
+  /* BIRDS GRID */
+  .birds-section { background: white; }
+
+  .birds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .bird-card {
+    background: var(--cream);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid var(--green-pale);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .bird-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(45, 106, 79, 0.15);
+    border-color: var(--green-light);
+  }
+
+  .bird-img {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bird-img.green { background: linear-gradient(135deg, #d8f3dc, #b7e4c7); }
+  .bird-img.blue { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+  .bird-img.yellow { background: linear-gradient(135deg, #fef9c3, #fde68a); }
+  .bird-img.white { background: linear-gradient(135deg, #f1f5f9, #e2e8f0); }
+  .bird-img.purple { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
+  .bird-img.mixed { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
+
+  .badge-sold {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ef4444;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .badge-new {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .bird-info { padding: 18px; }
+
+  .bird-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+
+  .bird-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+
+  .bird-footer { display: flex; align-items: center; justify-content: space-between; }
+
+  .bird-price {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green);
+    font-family: 'Playfair Display', serif;
+  }
+
+  .bird-price span { font-size: 13px; color: var(--muted); font-weight: 400; font-family: inherit; }
+
+  .buy-btn {
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+  .buy-btn:hover { background: var(--green-light); transform: scale(1.05); }
+  .buy-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+
+  /* WHY US */
+  .why-section { background: var(--green); color: white; }
+  .why-section .section-title h2 { color: white; }
+  .why-section .section-title p { color: rgba(255,255,255,0.7); }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 28px 22px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .feature-card:hover { background: rgba(255,255,255,0.18); }
+
+  .feature-icon { font-size: 36px; margin-bottom: 14px; }
+  .feature-title { font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+  .feature-desc { font-size: 13px; opacity: 0.75; line-height: 1.6; }
+
+  /* CONTACT */
+  .contact-section { background: var(--cream); }
+
+  .contact-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    border: 2px solid var(--green-pale);
+    box-shadow: 0 20px 60px rgba(45, 106, 79, 0.08);
+  }
+
+  .form-group { margin-bottom: 18px; }
+
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--green-pale);
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, select:focus, textarea:focus { border-color: var(--green-light); }
+  textarea { resize: vertical; min-height: 100px; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    margin-top: 8px;
+  }
+  .submit-btn:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(45,106,79,0.3); }
+
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    background: var(--green-pale);
+    border-radius: 12px;
+    color: var(--green);
+    font-weight: 600;
+    margin-top: 16px;
+    font-size: 15px;
+  }
+
+  /* CONTACT INFO */
+  .contact-info {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .info-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 2px solid var(--green-pale);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 28px 40px;
+    font-size: 13px;
+  }
+
+  footer strong { color: white; }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: white;
+    border-radius: 24px;
+    padding: 36px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: popIn 0.3s ease;
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .modal-bird { font-size: 64px; margin-bottom: 16px; }
+  .modal h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--green); margin-bottom: 10px; }
+  .modal p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+
+  .modal-btns { display: flex; gap: 12px; }
+  .modal-btns a, .modal-btns button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+  .modal-whatsapp { background: #25d366; color: white; border: none; }
+  .modal-whatsapp:hover { background: #1db954; }
+  .modal-close-btn { background: var(--cream); color: var(--text); border: 2px solid var(--green-pale); }
+  .modal-close-btn:hover { background: var(--green-pale); }
+
+  @media (max-width: 600px) {
+    nav { padding: 12px 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .contact-wrap { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🦜 Bhaskar's Budgies</div>
+  <div class="nav-links">
+    <a href="#birds">हमारे तोते</a>
+    <a href="#why">क्यों हम?</a>
+    <a href="#contact" class="nav-cta">संपर्क करें</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-birds">
+    <div class="floating-bird" style="top:15%;left:8%;animation-duration:4s;font-size:50px;">🦜</div>
+    <div class="floating-bird" style="top:60%;left:5%;animation-duration:5s;font-size:35px;">🦜</div>
+    <div class="floating-bird" style="top:20%;right:8%;animation-duration:3.5s;font-size:45px;">🦜</div>
+    <div class="floating-bird" style="top:70%;right:6%;animation-duration:6s;font-size:30px;">🦜</div>
+    <div class="floating-bird" style="top:40%;left:15%;animation-duration:4.5s;font-size:28px;">🐦</div>
+    <div class="floating-bird" style="top:35%;right:15%;animation-duration:5.5s;font-size:32px;">🐦</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">🌿 100% स्वस्थ और खुशहाल पक्षी</div>
+    <h1>सुंदर <span>Budgies</span><br>आपके घर के लिए</h1>
+    <p>हम आपको सबसे स्वस्थ, रंगीन और प्यारे Budgies तोते देते हैं। हर पक्षी को प्यार से पाला गया है।</p>
+    <div class="hero-btns">
+      <a href="#birds" class="btn-primary">🦜 तोते देखें</a>
+      <a href="#contact" class="btn-secondary">📞 संपर्क करें</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">खुश ग्राहक</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">रंग उपलब्ध</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5★</div>
+        <div class="stat-label">Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIRDS -->
+<section class="birds-section" id="birds">
+  <div class="section-title">
+    <h2>🦜 हमारे Budgies</h2>
+    <p>सभी तोते स्वस्थ हैं और घर पर पाले गए हैं</p>
+  </div>
+  <div class="birds-grid">
+
+    <div class="bird-card" onclick="openModal('हरा Budgie', '🦜', 'सबसे लोकप्रिय रंग! बहुत चंचल और बातूनी होता है। आसानी से सिखाया जा सकता है।', '₹500')">
+      <div class="bird-img green">
+        🦜
+        <span class="badge-new">नया</span>
+      </div>
+      <div class="bird-info">
+        <div class="bird-name">हरा Budgie</div>
+        <div class="bird-desc">सबसे लोकप्रिय रंग। बहुत चंचल और बातूनी। आसानी से सिखाया जा सकता है।</div>
+        <div class="bird-footer">
+          <div class="bird-price">₹500 <span>/ जोड़ी</span></div>
+          <button class="buy-btn">खरीदें</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bird-card" onclick="openModal('नीला Budgie', '💙', 'बेहद सुंदर नीले रंग का तोता। शांत स्वभाव का। घर में सबका मन मोह लेता है।', '₹600')">
+      <div class="bird-img blue">
+        🐦
+      </div>
+      <div class="bird-info">
+        <div class="bird-name">नीला Budgie</div>
+        <div class="bird-desc">बेहद सुंदर नीले रंग का तोता। शांत स्वभाव का। घर में सबका मन मोह लेता है।</div>
+        <div class="bird-footer">
+          <div class="bird-price">₹600 <span>/ जोड़ी</span></div>
+          <button class="buy-btn">खरीदें</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bird-card" onclick="openModal('पीला Budgie', '🌟', 'चमकीला पीला रंग। बहुत मिलनसार। बच्चों के साथ खेलना पसंद करता है।', '₹650')">
+      <div class="bird-img yellow">
+        🐤
+        <span class="badge-new">Hot 🔥</span>
+      </div>
+      <div class="bird-info">
+        <div class="bird-name">पीला Budgie</div>
+        <div class="bird-desc">चमकीला पीला रंग। बहुत मिलनसार। बच्चों के साथ खेलना बहुत पसंद करता है।</div>
+        <div class="bird-footer">
+          <div class="bird-price">₹650 <span>/ जोड़ी</span></div>
+          <button class="buy-btn">खरीदें</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bird-card" onclick="openModal('सफ़ेद Budgie', '🤍', 'बर्फ जैसा सफ़ेद रंग। बहुत दुर्लभ और खूबसूरत। घर की शोभा बढ़ाता है।', '₹800')">
+      <div class="bird-img white">
+        🕊️
+      </div>
+      <div class="bird-info">
+        <div class="bird-name">सफ़ेद Budgie</div>
+        <div class="bird-desc">बर्फ जैसा सफ़ेद रंग। बहुत दुर्लभ और खूबसूरत। घर की शोभा बढ़ाता है।</div>
+        <div class="bird-footer">
+          <div class="bird-price">₹800 <span>/ जोड़ी</span></div>
+          <button class="buy-btn">खरीदें</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bird-card" onclick="openModal('बैंगनी Budgie', '💜', 'दुर्लभ बैंगनी रंग। बहुत मांग रहती है। जल्दी order करें!', '₹900')">
+      <div class="bird-img purple">
+        🦋
+        <span class="badge-new">Rare ✨</span>
+      </div>
+      <div class="bird-info">
+        <div class="bird-name">बैंगनी Budgie</div>
+        <div class="bird-desc">दुर्लभ बैंगनी रंग। बहुत मांग रहती है। जल्दी order करें!</div>
+        <div class="bird-footer">
+          <div class="bird-price">₹900 <span>/ जोड़ी</span></div>
+          <button class="buy-btn">खरीदें</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bird-card" onclick="openModal('मिश्रित रंग Budgie', '🌈', 'रंग-बिरंगा तोता। दो या तीन रंगों का मिश्रण। हर एक अनोखा होता है!', '₹750')">
+      <div class="bird-img mixed">
+        🌈
+      </div>
+      <div class="bird-info">
+        <div class="bird-name">मिश्रित रंग Budgie</div>
+        <div class="bird-desc">रंग-बिरंगा तोता। दो या तीन रंगों का मिश्रण। हर एक अनोखा होता है!</div>
+        <div class="bird-footer">
+          <div class="bird-price">₹750 <span>/ जोड़ी</span></div>
+          <button class="buy-btn">खरीदें</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section" id="why">
+  <div class="section-title">
+    <h2>हमें क्यों चुनें?</h2>
+    <p>हम सिर्फ तोते नहीं बेचते, एक परिवार का साथी देते हैं</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🏥</div>
+      <div class="feature-title">100% स्वस्थ</div>
+      <div class="feature-desc">हर Budgie की पूरी जांच होती है। बीमार पक्षी कभी नहीं बेचते।</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚚</div>
+      <div class="feature-title">घर पहुंचाएं</div>
+      <div class="feature-desc">आपके शहर में safe delivery। पक्षी सुरक्षित पहुंचेगा।</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📞</div>
+      <div class="feature-title">After-Sale Support</div>
+      <div class="feature-desc">खरीदने के बाद भी हम मदद करते हैं। कोई भी सवाल पूछें।</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💰</div>
+      <div class="feature-title">सही दाम</div>
+      <div class="feature-desc">बाज़ार से कम दाम। कोई छुपा हुआ charge नहीं।</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-title">
+    <h2>📞 संपर्क करें</h2>
+    <p>तोता खरीदना है? बस नीचे form भरें या सीधे call करें</p>
+  </div>
+
+  <div class="contact-info">
+    <div class="info-chip">📱 WhatsApp: +91 7900383771</div>
+    <div class="info-chip">📍 Moradabad, Uttar Pradesh</div>
+    <div class="info-chip">⏰ सुबह 9 से रात 8 बजे</div>
+  </div>
+
+  <div class="contact-wrap">
+    <div class="form-group">
+      <label>आपका नाम *</label>
+      <input type="text" id="name" placeholder="जैसे: राम कुमार">
+    </div>
+    <div class="form-group">
+      <label>WhatsApp नंबर *</label>
+      <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX">
+    </div>
+    <div class="form-group">
+      <label>कौन सा Budgie चाहिए?</label>
+      <select id="birdType">
+        <option value="">-- चुनें --</option>
+        <option>हरा Budgie - ₹500</option>
+        <option>नीला Budgie - ₹600</option>
+        <option>पीला Budgie - ₹650</option>
+        <option>सफ़ेद Budgie - ₹800</option>
+        <option>बैंगनी Budgie - ₹900</option>
+        <option>मिश्रित रंग - ₹750</option>
+        <option>अभी तय नहीं</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>कोई सवाल?</label>
+      <textarea id="msg" placeholder="जैसे: क्या home delivery होती है? पिंजरा मिलेगा?"></textarea>
+    </div>
+    <button class="submit-btn" onclick="submitForm()">🦜 संदेश भेजें</button>
+    <div class="success-msg" id="successMsg">
+      ✅ बहुत बढ़िया! हम जल्द ही WhatsApp पर संपर्क करेंगे।
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>🦜 <strong>Bhaskar's Budgies Paradise</strong> — Moradabad | सुंदर तोते, खुशहाल घर</p>
+  <p style="margin-top:8px;">© 2025 Bhaskar's Budgies | 📱 +91 7900383771</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-bird" id="modalEmoji">🦜</div>
+    <h3 id="modalName">हरा Budgie</h3>
+    <p id="modalDesc">विवरण</p>
+    <p style="font-size:22px;font-weight:700;color:var(--green);margin-bottom:20px;" id="modalPrice">₹500</p>
+    <div class="modal-btns">
+      <a href="https://wa.me/917900383771" target="_blank" class="modal-whatsapp">💬 WhatsApp</a>
+      <button class="modal-close-btn" onclick="closeModalBtn()">बंद करें</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal(name, emoji, desc, price) {
+    document.getElementById('modalName').textContent = name;
+    document.getElementById('modalEmoji').textContent = emoji;
+    document.getElementById('modalDesc').textContent = desc;
+    document.getElementById('modalPrice').textContent = price + ' प्रति जोड़ी';
+    document.getElementById('modalOverlay').classList.add('open');
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('modalOverlay')) {
+      document.getElementById('modalOverlay').classList.remove('open');
+    }
+  }
+
+  function closeModalBtn() {
+    document.getElementById('modalOverlay').classList.remove('open');
+  }
+
+  function submitForm() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    if (!name || !phone) {
+      alert('कृपया नाम और WhatsApp नंबर भरें।');
+      return;
+    }
+    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('msg').value = '';
+    document.getElementById('birdType').value = '';
+  }
+</script>
+
+</body>
+</html>
